@@ -830,6 +830,7 @@ ul {
   top: 0;
   left: 0;
   background-color: var(--main-color);
+  transition: 1s;
 }
 /* End Skills */
 /* Start Work Steps */
