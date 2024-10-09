@@ -23,3 +23,16 @@ let counter = setInterval(function () {
     clearInterval(counter);
   }
 }, 1000);
+
+// Animate Width On Scrolling
+let section = document.querySelector(".our-skills");
+let progressSpans = document.querySelectorAll(".the-progress span");
+
+window.onscroll = function () {
+  if (window.scrollY >= section.offsetTop - 250) {
+    progressSpans.forEach((span) => {
+      console.log(span.dataset.width);
+      span.style.width = span.dataset.width;
+    });
+  }
+};
