@@ -25,14 +25,35 @@ let counter = setInterval(function () {
 }, 1000);
 
 // Animate Width On Scrolling
-let section = document.querySelector(".our-skills");
+let skillsSection = document.querySelector(".our-skills");
 let progressSpans = document.querySelectorAll(".the-progress span");
+// Increase Numbers On Scrolling
+let statsSection = document.querySelector(".stats");
+let nums = document.querySelectorAll(".stats .number");
+let started = false;
 
 window.onscroll = function () {
-  if (window.scrollY >= section.offsetTop - 250) {
+  if (window.scrollY >= skillsSection.offsetTop - 250) {
     progressSpans.forEach((span) => {
-      console.log(span.dataset.width);
       span.style.width = span.dataset.width;
     });
   }
+
+  if (window.scrollY >= statsSection.offsetTop - 100) {
+    if (!started) {
+      nums.forEach((num) => {
+        numCounter(num);
+      });
+    }
+    started = true;
+  }
 };
+function numCounter(el) {
+  let goal = el.dataset.goal;
+  let counter = setInterval(() => {
+    el.textContent++;
+    if (el.textContent == goal) {
+      clearInterval(counter);
+    }
+  }, 1000 / goal);
+}
